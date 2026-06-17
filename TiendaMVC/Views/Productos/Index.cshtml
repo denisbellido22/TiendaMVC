@@ -1,0 +1,69 @@
+﻿@model List<TiendaMVC.Models.Producto>
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Productos</h2>
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <a href="/Productos/Crear" class="btn btn-success">
+                    ➕ Nuevo Producto
+                </a>
+
+                <a href="/Categorias" class="btn btn-info text-white">
+                    📂 Ver Categorías
+                </a>
+
+                <a href="/Clientes" class="btn btn-warning">
+                    👥 Ver Clientes
+                </a>
+            </div>
+
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th width="150">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>@p.Id</td>
+                            <td>@p.Nombre</td>
+                            <td>
+                                <span class="badge bg-success fs-6">
+                                    S/ @p.Precio
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-secondary fs-6">
+                                    @p.Stock
+                                </span>
+                            </td>
+                            <td>@p.CategoriaNombre</td>
+                            <td>
+                                <a href="/Productos/Eliminar/@p.Id"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="return confirm('¿Eliminar @p.Nombre?')">
+                                    🗑 Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

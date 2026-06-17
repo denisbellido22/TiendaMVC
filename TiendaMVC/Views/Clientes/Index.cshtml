@@ -1,0 +1,59 @@
+﻿@model List<TiendaMVC.Models.Cliente>
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">Clientes</h2>
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <a href="/Clientes/Crear" class="btn btn-success">
+                    ➕ Nuevo Cliente
+                </a>
+
+                <a href="/Productos" class="btn btn-primary">
+                    📦 Ver Productos
+                </a>
+
+                <a href="/Categorias" class="btn btn-info text-white">
+                    📂 Ver Categorías
+                </a>
+            </div>
+
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th width="150">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Id</td>
+                            <td>@c.Nombre</td>
+                            <td>@c.Email</td>
+                            <td>@c.Telefono</td>
+                            <td>
+                                <a href="/Clientes/Eliminar/@c.Id"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="return confirm('¿Eliminar @c.Nombre?')">
+                                    🗑 Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
